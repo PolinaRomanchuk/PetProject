@@ -1,7 +1,20 @@
+using Data.SQL;
+using Data.SQL.Interfaces;
+using Data.SQL.Repositories;
+using PetProject.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IUserService>(
+    diContainer => new UserService(diContainer.GetService<IUserRepository>()));
+
+var dataSqlStartup = new Startup();
+dataSqlStartup.RegisterDbContext(builder.Services);
+
+builder.Services.AddScoped<IUserRepository>(x => new UserRepository(x.GetService<WebContext>()));
 
 var app = builder.Build();
 

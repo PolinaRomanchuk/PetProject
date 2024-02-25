@@ -20,3 +20,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.header-logo {
+    display: inline;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-container {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between; 
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
