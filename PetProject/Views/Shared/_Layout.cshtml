@@ -12,14 +12,24 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="header-container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img class="header-logo" src="/images/cat_logo.png"/></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img class="header-logo" src="/images/cat_logo.png" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="header--bar__user">
-                    <a class="header--bar__login" asp-area="" asp-controller="User" asp-action="Add">Войти</a>
-                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="header--bar__user">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Выйти</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="header--bar__user">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Войти</a>
+                    </div>
+                }
             </div>
         </nav>
     </header>

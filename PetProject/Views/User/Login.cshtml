@@ -1,0 +1,20 @@
+﻿@using PetProject.Models
+@model AuthViewModel
+
+<div>
+    <form method="post">
+        <div>
+            Login: @Html.TextBoxFor(x => x.Login)
+
+            @Html.ValidationMessageFor(x => x.Login)
+        </div>
+        <div>
+            Password: @Html.PasswordFor(x => x.Password)
+
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+        <div>
+            <input type="submit" value="login" />
+        </div>
+    </form>
+</div>
