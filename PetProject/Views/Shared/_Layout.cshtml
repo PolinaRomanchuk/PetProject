@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PetProject.styles.css" asp-append-version="true" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    @RenderSection("JScript", false)
+    @RenderSection("Styles", false)
 </head>
 <body>
     <header>
@@ -33,6 +37,27 @@
             </div>
         </nav>
     </header>
+   
+    <div class="navigation-leftColumn">
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/home.png" /></a>
+        </div>
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/other.png" /></a>
+        </div>
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/messages.png" /></a>
+        </div>
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon.png" /></a>
+        </div>
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon2.png" /></a>
+        </div>
+        <div class="item-of-column">
+            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon3.png" /></a>
+        </div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -9,14 +9,14 @@ namespace PetProject.Controllers
     public class UserController : Controller
     {
         private IUserService _userService;
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
         public IActionResult Index()
         {
             return View();
-        }
-        public UserController(IUserService userService)
-        {
-            _userService = userService;
         }
 
         [HttpGet]
@@ -75,6 +75,11 @@ namespace PetProject.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult OpenProfile()
+        {
+            return View();
         }
     }
 }

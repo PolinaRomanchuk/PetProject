@@ -43,3 +43,21 @@ body {
     justify-content: flex-end;
     margin-right: 50px;
 }
+
+.navigation-leftColumn {
+    flex-direction: column;
+    margin: 30px;
+    width: fit-content;
+}
+.navigation-logo {
+    flex-direction: column;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+.avatar {
+    max-width: 40px;
+    max-height: 40px;
+}
