@@ -1,6 +1,56 @@
-﻿<div class="head-of-profile">
+﻿@using PetProject.Models
+@using PetProject.Services;
+@model UserProfileViewModel
+
+@inject IAuthService authService
+
+
+<div class="header-profile">
     <div class="avatar">
         <img class="avatar" src="~/images/icon2.png">
     </div>
-    <div class="bio"></div>
+
+    <div class="container-profile-header">
+        <div class="name-info">
+            <div>
+                @authService.GetUser().LoginName
+            </div>
+            <div>
+                <a class="pencil-logo" href=""> <img src="~/images/pencil.png" class="pencil-logo" /></a>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <div>
+                @Model.PostsCount публикаций
+            </div>
+            <div>
+                @Model.FollowingCount подписок
+            </div>
+            <div>
+                @Model.FollowersCount подписчиков
+            </div>
+        </div>
+
+        <div class="pet-name-info">
+            <div>
+                @Model.PetName
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<div class="posts-list">
+    @foreach (var postModel in Model.Posts)
+    {
+        <div class="post-item">
+        <img src="@postModel">
+        </div>
+    }
+
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/profile.css">
+}

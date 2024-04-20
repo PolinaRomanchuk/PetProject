@@ -57,7 +57,6 @@ body {
     margin-left: 50px;
 }
 
-.avatar {
-    max-width: 40px;
-    max-height: 40px;
+.main-body {
+    display: flex;
 }

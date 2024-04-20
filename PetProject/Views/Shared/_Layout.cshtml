@@ -37,31 +37,33 @@
             </div>
         </nav>
     </header>
-   
-    <div class="navigation-leftColumn">
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/home.png" /></a>
+    <div class="main-body">
+        <div class="navigation-leftColumn">
+            <div class="item-of-column">
+                <a asp-controller="User" asp-action="AddUser"> <img class="navigation-logo" src="/images/home.png" /></a>
+            </div>
+            <div class="item-of-column">
+                <a asp-controller="User" asp-action="OpenProfile"> <img class="navigation-logo" src="/images/other.png" /></a>
+            </div>
+            <div class="item-of-column">
+                <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/messages.png" /></a>
+            </div>
+            <div class="item-of-column">
+                <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon.png" /></a>
+            </div>
+            <div class="item-of-column">
+                <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon2.png" /></a>
+            </div>
+            <div class="item-of-column">
+                <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon3.png" /></a>
+            </div>
         </div>
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/other.png" /></a>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/messages.png" /></a>
-        </div>
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon.png" /></a>
-        </div>
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon2.png" /></a>
-        </div>
-        <div class="item-of-column">
-            <a asp-controller="Home" asp-action="Index"> <img class="navigation-logo" src="/images/icon3.png" /></a>
-        </div>
-    </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
     </div>
 
     <footer class="border-top footer text-muted">

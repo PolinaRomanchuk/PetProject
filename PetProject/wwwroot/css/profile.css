@@ -1,0 +1,33 @@
+﻿
+.header-profile {
+    display: flex;
+}
+
+.avatar {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 75px;
+}
+
+.name-info, .profile-info, .pet-name-info {
+    display: flex;
+}
+
+.pencil-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.post-item img{
+    display: flex;
+    max-height: 300px;
+    max-width: 300px;
+    padding: 10px;
+    
+}

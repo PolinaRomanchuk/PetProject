@@ -1,8 +1,6 @@
 using Data.SQL;
-using Data.SQL.Interfaces;
-using Data.SQL.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 using PetProject.Services;
+using PetProject.Services.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,15 +15,19 @@ builder.Services
         x.AccessDeniedPath = "/User/AccessDenied";
     });
 
-builder.Services.AddScoped<IUserService>(
+/*builder.Services.AddScoped<IUserService>(
     diContainer => new UserService(diContainer.GetService<IUserRepository>()));
 builder.Services.AddScoped<IAuthService>(
     diContainer => new AuthService(diContainer.GetService<IUserService>(), diContainer.GetService<IHttpContextAccessor>()));
+builder.Services.AddScoped<IUserRepository>(x => new UserRepository(x.GetService<WebContext>()));*/
+
+var diRegisterationHelper = new DiRegisterationHelper();
+diRegisterationHelper.RegisterAllServices(builder.Services);
 
 var dataSqlStartup = new Startup();
 dataSqlStartup.RegisterDbContext(builder.Services);
 
-builder.Services.AddScoped<IUserRepository>(x => new UserRepository(x.GetService<WebContext>()));
+diRegisterationHelper.RegisterAllRepositories(builder.Services);
 
 builder.Services.AddHttpContextAccessor();
 

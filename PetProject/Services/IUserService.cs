@@ -8,5 +8,6 @@ namespace PetProject.Services
         User Login(string login, string password);
         public void AddUser (UserViewModel viewModel);
         User GetById(int currentUserId);
+        
     }
 }

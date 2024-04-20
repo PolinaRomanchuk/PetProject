@@ -9,9 +9,11 @@ namespace PetProject.Controllers
     public class UserController : Controller
     {
         private IUserService _userService;
-        public UserController(IUserService userService)
+        private IUserProfileService _userProfileService;
+        public UserController(IUserService userService, IUserProfileService userProfileService)
         {
             _userService = userService;
+            _userProfileService = userProfileService;
         }
 
         public IActionResult Index()
@@ -58,7 +60,7 @@ namespace PetProject.Controllers
 
             var claims = new List<Claim>() {
                     new Claim(AuthService.AUTH_CLAIMS_ID_NAME, user.Id.ToString()),
-                    new Claim("Name", user.Name),
+                    new Claim("LoginName", user.LoginName),
                     new Claim(ClaimTypes.AuthenticationMethod, AuthService.AUTH_NAME)
                 };
 
@@ -79,7 +81,8 @@ namespace PetProject.Controllers
 
         public IActionResult OpenProfile()
         {
-            return View();
+            var view = _userProfileService.GetUserProfile();
+            return View(view);
         }
     }
 }

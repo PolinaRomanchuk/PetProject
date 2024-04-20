@@ -7,7 +7,7 @@ namespace Data.SQL
     {
         public void RegisterDbContext(IServiceCollection services)
         {
-            var connectionString = "Data Source=.;Initial Catalog=PetProject;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var connectionString = "Data Source=.\\SQLExpress;Initial Catalog=PetProject;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<WebContext>(op => op.UseSqlServer(connectionString));
         }
     }

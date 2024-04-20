@@ -4,16 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.SQL.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        protected WebContext _webContext;
-        protected DbSet<User> _dbSet;
-
-        public UserRepository(WebContext webContext)
-        {
-            _webContext = webContext;
-            _dbSet = webContext.Set<User>();
-        }
+        public UserRepository(WebContext webContext) : base(webContext) { }
 
         public User GetById(int id)
         {
@@ -29,7 +22,22 @@ namespace Data.SQL.Repositories
 
         public User GetByNameAndPassword(string login, string password)
         {
-            return _dbSet.FirstOrDefault(x => x.Name == login && x.Password == password);
+            return _dbSet.FirstOrDefault(x => x.LoginName == login && x.Password == password);
+        }
+
+        public User GetUserWithProfile(int id)
+        {
+            return _dbSet
+                .Include(x => x.Profile)
+                .SingleOrDefault(x => x.Id == id);
+        }
+
+        public User GetUserWithProfileandPosts(int id)
+        {
+            return _dbSet
+                .Include(x => x.Profile)
+                .Include(x => x.Posts)
+                .SingleOrDefault(x => x.Id == id);
         }
     }
 }
