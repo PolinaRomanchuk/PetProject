@@ -1,62 +1,60 @@
-html {
-  font-size: 14px;
+.main-container {
+    display: flex;
+    margin-top: 20px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-.header-logo {
-    display: inline;
-    width: 50px;
-    height: 50px;
+.logo-of-site img {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
-.header-container {
-    display: flex;
-    flex-wrap: inherit;
-    align-items: center;
-    justify-content: space-between; 
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 50px;
-}
-
-.navigation-leftColumn {
+.navigation-leftColumn-container {
     flex-direction: column;
+    margin-left: 20px;
+    width: 300px;
+    position: fixed;
+}
+   
+.item-of-column {
+    color: black;
+    text-decoration: none;
     margin: 30px;
-    width: fit-content;
-}
-.navigation-logo {
-    flex-direction: column;
-    width: 20px;
-    height: 20px;
-    margin-bottom: 30px;
-    margin-left: 50px;
-}
-
-.main-body {
     display: flex;
 }
+
+    .item-of-column:hover {
+        background: #F5F5F5;
+        border-radius: 20px;
+        color: #4B0082;
+    }
+
+.navigation-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.name-of-column {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.content-container {
+    margin-left: 300px;
+}
+
+footer {
+    margin-right: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align:end;
+    width: 99%;
+}
+
+.logout-button, .login-button {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+

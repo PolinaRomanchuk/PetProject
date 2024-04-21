@@ -5,12 +5,12 @@
 @inject IAuthService authService
 
 
-<div class="header-profile">
+<div class="header-profile-container">
     <div class="avatar">
         <img class="avatar" src="~/images/icon2.png">
     </div>
 
-    <div class="container-profile-header">
+    <div class="header-profile-main-info">
         <div class="name-info">
             <div>
                 @authService.GetUser().LoginName
@@ -21,13 +21,13 @@
         </div>
 
         <div class="profile-info">
-            <div>
+            <div class="profile-info-item">
                 @Model.PostsCount публикаций
             </div>
-            <div>
+            <div class="profile-info-item">
                 @Model.FollowingCount подписок
             </div>
-            <div>
+            <div class="profile-info-item">
                 @Model.FollowersCount подписчиков
             </div>
         </div>
@@ -37,11 +37,17 @@
                 @Model.PetName
             </div>
         </div>
+        <div class="info-bio">
+            <div>
+                @Model.InfoBio
+            </div>
+        </div>
+
     </div>
 </div>
 
 
-<div class="posts-list">
+<div class="posts-list-container">
     @foreach (var postModel in Model.Posts)
     {
         <div class="post-item">
