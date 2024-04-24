@@ -79,10 +79,6 @@ namespace PetProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult OpenProfile()
-        {
-            var view = _userProfileService.GetUserProfile();
-            return View(view);
-        }
+       
     }
 }

@@ -1,0 +1,23 @@
+﻿@using PetProject.Models
+@using PetProject.Services;
+@model UserProfileViewModel
+
+@inject IAuthService authService
+
+<div>
+    <form method="post" enctype="multipart/form-data">
+        @Html.HiddenFor(x => x.Id)
+        <input type="hidden" value="@Model.Id" />
+        <input type="file" name="@(nameof(UserProfileViewModel.ImgUrlFile))" />
+        <div>
+            Имя питомца: @Html.TextBoxFor(x => x.PetName)
+        </div>
+        <div>
+            Описание: @Html.TextBoxFor(x => x.InfoBio)
+        </div>
+        <div>
+            <input type="submit" value="Обновить" />
+        </div>
+    </form>
+
+</div>

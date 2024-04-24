@@ -7,7 +7,7 @@
 
 <div class="header-profile-container">
     <div class="avatar">
-        <img class="avatar" src="~/images/icon2.png">
+        <img class="avatar" src="@Model.PhotoUrl">
     </div>
 
     <div class="header-profile-main-info">
@@ -16,7 +16,7 @@
                 @authService.GetUser().LoginName
             </div>
             <div>
-                <a class="pencil-logo" href=""> <img src="~/images/pencil.png" class="pencil-logo" /></a>
+                <a class="pencil-logo" href="UpdateProfile/@Model.Id"> <img src="~/images/pencil.png" class="pencil-logo" /></a>
             </div>
         </div>
 
