@@ -1,7 +1,6 @@
 ﻿using Data.SQL.Interfaces;
 using Data.SQL.Models;
 using PetProject.Models;
-using System.Drawing;
 
 namespace PetProject.Services
 {

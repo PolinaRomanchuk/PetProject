@@ -31,6 +31,18 @@ diRegisterationHelper.RegisterAllRepositories(builder.Services);
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddSignalR();
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("*");
+        builder.WithHeaders("*");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +55,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseCors();
 
 app.UseRouting();
 

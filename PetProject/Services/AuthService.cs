@@ -20,6 +20,10 @@ namespace PetProject.Services
         {
             var userIdStr = _httpContextAccessor.HttpContext.User.Claims
                 .FirstOrDefault(x => x.Type == AUTH_CLAIMS_ID_NAME)?.Value;
+            if (userIdStr == null)
+            {
+                userIdStr = _httpContextAccessor.HttpContext.Request.Headers["LoginHeaders"];
+            }
             var currentUserId = int.Parse(userIdStr ?? "0");
             var user = _userService.GetById(currentUserId);
             return user;
