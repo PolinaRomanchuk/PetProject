@@ -21,6 +21,8 @@
     text-decoration: none;
     margin: 30px;
     display: flex;
+    font-family: system-ui;
+    font-size: 20px;
 }
 
     .item-of-column:hover {
