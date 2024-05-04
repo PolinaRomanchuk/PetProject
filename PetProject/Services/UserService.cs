@@ -24,6 +24,16 @@ namespace PetProject.Services
             };
             _userRepository.Add(User);
         }
+        public void CreateUser(string loginName, string password, string email)
+        {
+            var User = new User
+            {
+                LoginName = loginName,
+                Password = password,
+                Email = email,
+            };
+            _userRepository.Add(User);
+        }
 
         public User GetById(int id)
         {

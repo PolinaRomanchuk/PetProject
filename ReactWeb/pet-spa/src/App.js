@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/login/login';
 
 import LeftColumnMenu from './components/leftColumnMenu/leftColumnMenu';
+import CreateUser from './components/createUser/createUser.js';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <LeftColumnMenu />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<CreateUser />} />
         </Routes>
       </BrowserRouter>
     </div>
