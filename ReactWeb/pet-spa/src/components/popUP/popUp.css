@@ -19,12 +19,9 @@
 }
 
 .modal-content {
-    padding: 20px;
-    border-radius: 12px;
     background-color: white;
     transform: scale(0.5);
     transition: 0.4s all;
-    width: 50vw;
 }
 
 .modal-content.active{

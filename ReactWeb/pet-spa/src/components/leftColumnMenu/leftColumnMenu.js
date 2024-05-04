@@ -7,13 +7,16 @@ import iconCreateNewProfile from '../../images/create-new-profile.png'
 import { Link } from 'react-router-dom'
 import Modal from '../popUP/modal';
 import { useState, useEffect } from 'react';
-import '../popUP/popUp.css' ;
-import Login  from '../login/login';
+import '../popUP/popUp.css';
+import Login from '../login/login';
+
+
 
 function LeftColumnMenu() {
     const [modalActive, setModalActive] = useState(false)
 
     return (
+
         <>
             <div className="main-container">
                 <div className="navigation-leftColumn-container">
@@ -36,11 +39,12 @@ function LeftColumnMenu() {
                         <img className="navigation-logo" src={iconCreateNewProfile} />
                         <div className="name-of-column">Создать профиль</div>
                     </a>
-                    <a  className="item-of-column" onClick = {() => setModalActive(true)}>Войти</a>
-                        <Modal active = {modalActive} setActive = {setModalActive}>
+
+                    <a className="item-of-column" onClick={() => setModalActive(true)}>Войти</a>
+                    <Modal active={modalActive} setActive={setModalActive}>
                         <Login></Login>
-                        </Modal>
-                    
+                    </Modal>
+
                 </div>
             </div>
         </>
