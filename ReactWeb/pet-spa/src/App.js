@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/user" element={<CreateUser />} />
+          <Route path="/" element={<index />} />
         </Routes>
       </BrowserRouter>
     </div>

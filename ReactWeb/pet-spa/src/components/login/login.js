@@ -35,19 +35,22 @@ function Login() {
         <div className='container'>
             {isLoggedIn ?
                 (
-                    <div className='userBlock'>
+                    <div>
                         <button onClick={LogoutHandler}>Выйти</button>
                     </div>
                 ) :
                 (
                     <div class="login-page">
                         <div class="form">
+                            <Link to={'/'}>
+                                <a className="close-button" />
+                            </Link>
                             <form class="login-form" onSubmit={SubmitHandler}>
                                 <input type="text" required placeholder="логин" value={login} onChange={e => setLogin(e.target.value)} />
                                 <input type="password" required placeholder="пароль" value={password} onChange={e => setPassword(e.target.value)} className='passwordInput' />
                                 <button type='submit'>Войти</button>
                                 <p class="message">У вас ещё нет аккаунта?
-                                    <Link to={'/user'}>Создать</Link>
+                                    <Link to={'/user'}> Создать</Link>
                                 </p>
                             </form>
                         </div>
