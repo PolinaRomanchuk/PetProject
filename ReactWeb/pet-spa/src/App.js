@@ -5,6 +5,8 @@ import Login from './components/login/login';
 
 import LeftColumnMenu from './components/leftColumnMenu/leftColumnMenu';
 import CreateUser from './components/createUser/createUser.js';
+import MyProfileInfo from './components/myProfileComponents/myProfileInfo.js';
+import { AuthProvider } from './components/login/auth.js';
 
 
 
@@ -19,12 +21,15 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+      <AuthProvider>
         <LeftColumnMenu />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/user" element={<CreateUser />} />
           <Route path="/" element={<index />} />
+          <Route path="/profile" element={<MyProfileInfo/>}/>
         </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

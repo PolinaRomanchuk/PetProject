@@ -7,7 +7,6 @@ namespace Data.SQL.Repositories
     {
         public UserProfileRepository(WebContext webContext) : base(webContext) { }
 
-
         public void UpdatePetNameAndInfoBioInUserProfile(int id, string newPetName, string newInfoBio)
         {
             var user = _dbSet.SingleOrDefault(x => x.Id == id);
@@ -15,7 +14,5 @@ namespace Data.SQL.Repositories
             user.PetName = newPetName;
             _webContext.SaveChanges();
         }
-
-  
     }
 }

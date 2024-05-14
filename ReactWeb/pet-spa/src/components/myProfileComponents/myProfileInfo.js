@@ -1,46 +1,64 @@
+import '../../css/profile.css'
+import { profileApi } from '../../services/myProfileInfoApi'
+import { useState, useEffect } from 'react';
+import { AuthContext } from '../login/auth';
+import { useContext } from 'react';
+import pencil from '../../images/pencil.png'
+import addnewpost from '../../images/addnewpost.png'
 
+function MyProfileInfo() {
+    const [profile, setProfile] = useState('');
+    const { GetUserProfile } = profileApi;
+    const { userId, name } = useContext(AuthContext);
 
-function myProfileInfo() {
+    useEffect(function () {
+        GetUserProfile(userId)
+            .then(response => {
+                console.log(response.data)
+                setProfile(response.data)
+            });
+    }, [])
+
     return (
         <div>
-            <div class="header-profile-container">
-                <div class="avatar">
-                    <img class="avatar" src="@Model.PhotoUrl"/>
+            <div className="header-profile-container">
+                <div className="avatar">
+                    <img className="avatar" src={profile.photoUrl} />
                 </div>
 
-                <div class="header-profile-main-info">
-                    <div class="name-info">
+                <div className="header-profile-main-info">
+                    <div className="name-info">
                         <div>
-                            @authService.GetUser().LoginName
+                            {name}
                         </div>
                         <div>
-                            <a class="pencil-logo" href="UpdateProfile/@Model.Id"> <img src="~/images/pencil.png" class="pencil-logo" /></a>
+                            <a className="pencil-logo" > <img src={pencil} className="pencil-logo" /></a>
                         </div>
                         <div>
-                            <a class="add-new-post-logo" href="UpdateProfile/@Model.Id"> <img src="~/images/addnewpost.png" class="add-new-post-logo" /></a>
+                            <a className="add-new-post-logo" > <img src={addnewpost} className="add-new-post-logo" /></a>
                         </div>
                     </div>
 
-                    <div class="profile-info">
-                        <div class="profile-info-item">
-                            @Model.PostsCount публикаций
+                    <div className="profile-info">
+                        <div className="profile-info-item">
+                            {profile.postsCount} публикаций
                         </div>
-                        <div class="profile-info-item">
-                            @Model.FollowingCount подписок
+                        <div className="profile-info-item">
+                            {profile.followingCount} подписок
                         </div>
-                        <div class="profile-info-item">
-                            @Model.FollowersCount подписчиков
+                        <div className="profile-info-item">
+                            {profile.followersCount} подписчиков
                         </div>
                     </div>
 
-                    <div class="pet-name-info">
+                    <div className="pet-name-info">
                         <div>
-                            @Model.PetName
+                            {profile.petName}
                         </div>
                     </div>
-                    <div class="info-bio">
+                    <div className="info-bio">
                         <div>
-                            @Model.InfoBio
+                            {profile.infoBio}
                         </div>
                     </div>
 
@@ -49,4 +67,4 @@ function myProfileInfo() {
         </div>
     );
 };
-export default myProfileInfo;
+export default MyProfileInfo;
