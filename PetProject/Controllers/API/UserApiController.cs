@@ -30,5 +30,13 @@ namespace PetProject.Controllers.API
             var c= _userProfileService.GetUserProfileById(id);
             return c;
         }
+
+        [Route("GetUserPosts")]
+        public UserProfileViewModel GetUserPosts(int id)
+        {
+            var c = _userProfileService.GetUserProfileById(id);
+            return c;
+        }
+
     }
 }

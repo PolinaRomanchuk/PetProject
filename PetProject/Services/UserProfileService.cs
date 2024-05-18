@@ -44,7 +44,7 @@ namespace PetProject.Services
 
         public UserProfileViewModel GetUserProfileById(int id)
         {
-            var user = _userRepository.GetUserWithProfile(id);
+            var user = _userRepository.GetUserWithProfileandPosts(id);
 
             return new UserProfileViewModel
             {
@@ -52,6 +52,7 @@ namespace PetProject.Services
                 PetName = user.Profile.PetName,
                 InfoBio = user.Profile.InfoBio,
                 PhotoUrl = user.Profile.ProfilePhotoUrl,
+                Posts = user.Posts.Select(x => x.ImageUrl).ToList(),
             };
         }
 

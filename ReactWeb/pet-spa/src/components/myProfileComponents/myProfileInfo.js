@@ -5,6 +5,7 @@ import { AuthContext } from '../login/auth';
 import { useContext } from 'react';
 import pencil from '../../images/pencil.png'
 import addnewpost from '../../images/addnewpost.png'
+import Post from './myPosts';
 
 function MyProfileInfo() {
     const [profile, setProfile] = useState('');
@@ -62,6 +63,14 @@ function MyProfileInfo() {
                         </div>
                     </div>
 
+
+                    <div className='posts-list-container'>
+                {
+                    profile.posts?.map(post => {
+                        return (<Post model={post}></Post>)
+                    })
+                }
+            </div>
                 </div>
             </div>
         </div>

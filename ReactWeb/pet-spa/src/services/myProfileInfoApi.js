@@ -6,7 +6,6 @@ const GetUserProfile = (userId) =>
     axios
         .get(`${baseUrl}user/OpenUserProfile?id=${userId}`);
 
-
 export const profileApi = {
     GetUserProfile
 };

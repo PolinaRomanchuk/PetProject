@@ -17,7 +17,7 @@ function LeftColumnMenu() {
             <div className="main-container">
                 <div className="navigation-leftColumn-container">
                     <div className="logo-of-site">
-                        <img src={iconCatLogo} class="logo-of-site" />
+                        <img src={iconCatLogo} class="logo-of-site" />PurrfectShots
                     </div>
                     <a className="item-of-column" >
                         <img className="navigation-logo" src={iconMyProfile} />
