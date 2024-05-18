@@ -1,4 +1,4 @@
-import '../../css/profile.css'
+import '../myProfile/profile.css'
 
 function Post({ model }) {
 

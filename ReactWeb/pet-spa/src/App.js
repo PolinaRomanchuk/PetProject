@@ -1,14 +1,10 @@
 import axios from 'axios';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
-import Login from './components/login/login';
-
-import LeftColumnMenu from './components/leftColumnMenu/leftColumnMenu';
+import MainMenu from './components/mainMenu/mainMenu.js';
 import CreateUser from './components/createUser/createUser.js';
-import MyProfileInfo from './components/myProfileComponents/myProfileInfo.js';
-import { AuthProvider } from './components/login/auth.js';
-
-
+import Profile from './components/myProfile/Profile.js';
+import { AuthProvider, AuthContext } from './components/login/auth.js';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("userId"))
@@ -22,12 +18,12 @@ function App() {
     <div>
       <BrowserRouter>
       <AuthProvider>
-        <LeftColumnMenu />
+        <MainMenu />
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<CreateUser />} />
-          <Route path="/" element={<index />} />
-          <Route path="/profile" element={<MyProfileInfo/>}/>
+          <Route path="/login" element={<AuthProvider/>} />
+          <Route path="/user" element={<CreateUser/>} />
+          <Route path="/" element={<index/>} />
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
         </AuthProvider>
       </BrowserRouter>

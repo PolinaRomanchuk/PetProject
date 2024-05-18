@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import CreateUserByApi from '../../services/createUserByApi.js'
+import CreateUserApi from '../../services/createUserApi.js'
 import { Link } from 'react-router-dom'
 import '../login/login.css'
 
 function CreateUser() {
-
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-        CreateUserByApi(login, password, email)
+        CreateUserApi(login, password, email)
     };
 
     return (

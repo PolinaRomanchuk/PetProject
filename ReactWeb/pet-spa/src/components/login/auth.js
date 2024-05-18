@@ -54,9 +54,8 @@ export const AuthProvider = ({ children }) => {
             <div className='container'>
                 {isLoggedIn ?
                     (
-                        <div>
-
-                        </div>
+                            <>
+                            </>
                     ) :
                     (
                         <div class="login-page">

@@ -1,0 +1,74 @@
+.content-container {
+    margin-left: 270px;
+    position: absolute;
+}
+
+.header-profile-container {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 55px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.name-info,
+.profile-info,
+.pet-name-info,
+.info-bio {
+    display: flex;
+    font-family: system-ui;
+}
+
+.name-info {
+    font-size: 20px;
+    margin: 0 20px 5px 0;
+}
+
+.profile-info .profile-info-item {
+    font-size: 15px;
+    margin: 0 60px 20px 0;
+    font-family: system-ui;
+}
+
+.edit-profile-button,
+.add-new-post-button {
+    background-color: white;
+    border: none;
+}
+
+.edit-profile-button,
+.add-new-post-button:hover {
+    background-color: #FCF8FC;
+    cursor: pointer;
+}
+
+.pencil-logo,
+.plus-logo {
+    width: 15px;
+    height: 15px;
+}
+
+.posts-list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.post-item {
+    width: 390px;
+    height: 390px;
+    margin: 10px;
+}
+
+.post-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
