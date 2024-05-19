@@ -27,15 +27,14 @@ namespace PetProject.Controllers.API
         [Route("OpenUserProfile")]
         public UserProfileViewModel OpenProfile(int id)
         {
-            var c= _userProfileService.GetUserProfileById(id);
+            var c = _userProfileService.GetUserProfileById(id);
             return c;
         }
 
-        [Route("GetUserPosts")]
-        public UserProfileViewModel GetUserPosts(int id)
+        [Route("UpdateProfile")]
+        public void UpdateUserProfile(string petName, string petInfo, int id)
         {
-            var c = _userProfileService.GetUserProfileById(id);
-            return c;
+            _userProfileService.UpdateUserProfile(petName, petInfo, id);
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Data.SQL.Interfaces;
 using Data.SQL.Models;
 using PetProject.Models;
+using System.Drawing;
 
 namespace PetProject.Services
 {
@@ -51,6 +52,9 @@ namespace PetProject.Services
                 Id = user.Id,
                 PetName = user.Profile.PetName,
                 InfoBio = user.Profile.InfoBio,
+                FollowersCount = user.Profile.FollowersCount,
+                FollowingCount = user.Profile.FollowingCount,
+                PostsCount = user.Posts.Count,
                 PhotoUrl = user.Profile.ProfilePhotoUrl,
                 Posts = user.Posts.Select(x => x.ImageUrl).ToList(),
             };
@@ -60,6 +64,10 @@ namespace PetProject.Services
         {
             _userProfileRepository.UpdatePetNameAndInfoBioInUserProfile(id, newPetName, newInfoBio);
         }
+
+
+
+        
 
         public void UpdateUserProfileAvatar(UserProfileViewModel viewModel)
         {
@@ -82,10 +90,21 @@ namespace PetProject.Services
                 {
                     viewModel.ImgUrlFile.CopyTo(fs);
                 }
-
-                user.ProfilePhotoUrl = $"/images/avatars/{fileName}";
+                user.ProfilePhotoUrl = $"https://localhost:7074/images/avatars/{fileName}";
                 _userProfileRepository.Update(user);
             }
         }
+
+
+
+
+        public void UpdateUserProfile( string petName, string petInfo, int id)
+        {
+            _userProfileRepository.UpdatePetNameUserNameAndInfoBioInUserProfile(petName,  petInfo,  id);
+        }
     }
+
+
+
+
 }

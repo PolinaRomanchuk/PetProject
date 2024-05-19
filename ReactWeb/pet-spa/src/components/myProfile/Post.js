@@ -4,7 +4,7 @@ function Post({ model }) {
 
     return (
         <>
-            <div class="post-item">
+            <div className="post-item">
                 <img src={model} />
             </div>
         </>

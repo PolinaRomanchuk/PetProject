@@ -8,5 +8,6 @@ namespace PetProject.Services
         UserProfileViewModel GetUserProfileById(int id);
         void UpdateUserProfileAvatar(UserProfileViewModel viewModel);
         void UpdateUserProfile(int id, string newPetName, string newInfoBio);
+        void UpdateUserProfile(string petName, string petInfo, int id);
     }
 }

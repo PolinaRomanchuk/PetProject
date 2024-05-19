@@ -47,6 +47,10 @@ button.item-of-column:hover {
     color: #4c0082da;
 }
 
+.name-of-column.login, .name-of-column.logout{
+    margin-left: 0;
+}
+
 .navigation-logo {
     width: 30px;
     height: 30px;

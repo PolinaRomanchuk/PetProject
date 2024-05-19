@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react';
 import { AuthContext } from '../login/auth';
 import { useContext } from 'react';
 import Post from './Post';
-import { Pencil, Plus  } from 'lucide-react';
+import { Pencil, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
     const [profile, setProfile] = useState('');
     const { GetUserProfile } = profileApi;
     const { userId, name } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(function () {
         GetUserProfile(userId)
@@ -19,27 +21,26 @@ function Profile() {
             });
     }, [])
 
+    function Redirect(){
+        navigate('/edit');
+    }
+
     return (
         <>
             <div className='content-container'>
                 <div className="header-profile-container">
                     <div className="avatar">
-                        <img className="avatar" src={profile.photoUrl} />
+                        <img className="avatar" src={profile.photoUrl} alt='Фото профиля' />
                     </div>
                     <div className="header-profile-main-info">
                         <div className="name-info">
                             {name}
-                            <div>
-                                <button className='edit-profile-button'>
-                                 <Pencil className="pencil-logo"/>
-                                  
-                                </button>
-                            </div>
-                            <div>
-                                {<button className='add-new-post-button' >
-                                    <Plus className="plus-logo"/>
-                                </button>}
-                            </div>
+                            <button className='edit-profile-button'>
+                                <Pencil className="pencil-logo" onClick={Redirect} />
+                            </button>
+                            {<button className='add-new-post-button' >
+                                <Plus className="plus-logo" />
+                            </button>}
                         </div>
                         <div className="profile-info">
                             <div className="profile-info-item">
@@ -53,14 +54,10 @@ function Profile() {
                             </div>
                         </div>
                         <div className="pet-name-info">
-                            <div>
-                                {profile.petName}
-                            </div>
+                            {profile.petName}
                         </div>
                         <div className="info-bio">
-                            <div>
-                                {profile.infoBio}
-                            </div>
+                            {profile.infoBio}
                         </div>
                     </div>
                 </div>

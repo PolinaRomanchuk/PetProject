@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import { loginApi } from '../../services/loginApi.js';
 import './login.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext(
     {
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const { GetUserId, GetUser } = loginApi;
+    const navigate = useNavigate();
 
     useEffect(() => {
         GetUser(userId).then(response => setName(response.data.loginName))
@@ -39,6 +41,7 @@ export const AuthProvider = ({ children }) => {
     function LogoutHandler() {
         localStorage.removeItem("userId")
         setIsLoggedIn(false)
+        navigate('/');
     }
 
     return (
@@ -54,20 +57,20 @@ export const AuthProvider = ({ children }) => {
             <div className='container'>
                 {isLoggedIn ?
                     (
-                            <>
-                            </>
+                        <>
+                        </>
                     ) :
                     (
-                        <div class="login-page">
-                            <div class="form">
+                        <div className="login-page">
+                            <div className="form">
                                 <Link to={'/'}>
-                                    <a className="close-button" />
+                                    <button className="close-button" />
                                 </Link>
                                 <form class="login-form" onSubmit={SubmitHandler}>
                                     <input type="text" required placeholder="логин" value={login} onChange={e => setLogin(e.target.value)} />
                                     <input type="password" required placeholder="пароль" value={password} onChange={e => setPassword(e.target.value)} className='passwordInput' />
                                     <button type='submit'>Войти</button>
-                                    <p class="message">У вас ещё нет аккаунта?
+                                    <p className="message">У вас ещё нет аккаунта?
                                         <Link to={'/user'}> Создать</Link>
                                     </p>
                                 </form>

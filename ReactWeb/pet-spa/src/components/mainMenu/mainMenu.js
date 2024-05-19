@@ -21,19 +21,21 @@ function LeftColumnMenu() {
                         <img className="navigation-logo" src={iconMyProfile} />
                         <Link to={'/profile'} className="name-of-column">Мой профиль</Link>
                     </button>
-                    <button className="item-of-column" asp-controller="Home" asp-action="Index">
+                    <button className="item-of-column">
                         <img className="navigation-logo" src={iconMyNews} />
                         <div className="name-of-column">Моя лента</div>
                     </button>
-                    <button className="item-of-column" asp-controller="Home" asp-action="Index">
+                    <button className="item-of-column">
                         <img className="navigation-logo" src={iconInteresting} />
                         <div className="name-of-column">Интересное</div>
                     </button>
                     {isLoggedIn ? (
-                        <button className="item-of-column name-of-column" onClick={LogoutHandler}>Выйти</button>)
+                        <button className="item-of-column name-of-column" onClick={LogoutHandler}>
+                            <div className="name-of-column logout">Выйти</div>
+                        </button>)
                         : (
                             <button className="item-of-column">
-                                <Link to={'/login'} className="name-of-column">Войти</Link>
+                                <Link to={'/login'} className="name-of-column login">Войти</Link>
                             </button>)
                     }
                 </div>

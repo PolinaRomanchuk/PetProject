@@ -14,5 +14,13 @@ namespace Data.SQL.Repositories
             user.PetName = newPetName;
             _webContext.SaveChanges();
         }
+
+        public void UpdatePetNameUserNameAndInfoBioInUserProfile( string petName, string petInfo, int id)
+        {
+            var user = _dbSet.SingleOrDefault(x => x.Id == id);
+            user.InfoBio = petInfo;
+            user.PetName = petName;
+            _webContext.SaveChanges();
+        }
     }
 }

@@ -37,11 +37,11 @@
 
 .edit-profile-button,
 .add-new-post-button {
-    background-color: white;
+    background: none;
     border: none;
 }
 
-.edit-profile-button,
+.edit-profile-button:hover,
 .add-new-post-button:hover {
     background-color: #FCF8FC;
     cursor: pointer;

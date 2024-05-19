@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import MainMenu from './components/mainMenu/mainMenu.js';
 import CreateUser from './components/createUser/createUser.js';
 import Profile from './components/myProfile/Profile.js';
+import SuccessfullyCreated from './components/createUser/successfullyCreated.js'
+import UpdateProfile from './components/updateProfile/updateProfile.js';
 import { AuthProvider, AuthContext } from './components/login/auth.js';
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/user" element={<CreateUser/>} />
           <Route path="/" element={<index/>} />
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/done" element={<SuccessfullyCreated/>}/>
+          <Route path="/edit"element={<UpdateProfile/>}/>
         </Routes>
         </AuthProvider>
       </BrowserRouter>
