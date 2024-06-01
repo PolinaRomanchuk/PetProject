@@ -19,16 +19,13 @@ namespace PetProject.Controllers.API
         public int GetUserId(string login, string password)
         {
             var viewModel = _userService.Login(login, password);
-
             return viewModel.Id;
         }
 
         [Route("GetUser")]
         public User GetUser(int id)
         {
-            var viewModel = _userService.GetById(id);
-
-            return viewModel;
+            return _userService.GetUserById(id);
         }
     }
 }

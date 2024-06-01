@@ -25,7 +25,7 @@ namespace PetProject.Services
                 userIdStr = _httpContextAccessor.HttpContext.Request.Headers["LoginHeaders"];
             }
             var currentUserId = int.Parse(userIdStr ?? "0");
-            var user = _userService.GetById(currentUserId);
+            var user = _userService.GetUserById(currentUserId);
             return user;
         }
     }

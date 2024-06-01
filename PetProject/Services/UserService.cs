@@ -11,19 +11,8 @@ namespace PetProject.Services
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            
         }
 
-        public void AddUser(UserViewModel viewModel)
-        {
-            var User = new User
-            {
-                LoginName = viewModel.LoginName,
-                Email = viewModel.Email,
-                Password = viewModel.Password,
-            };
-            _userRepository.Add(User);
-        }
         public void CreateUser(string loginName, string password, string email)
         {
             var User = new User
@@ -35,15 +24,14 @@ namespace PetProject.Services
             _userRepository.Add(User);
         }
 
-        public User GetById(int id)
+        public User GetUserById(int id)
         {
-            return _userRepository.GetById(id);
+            return _userRepository.GetUserById(id);
         }
 
         public User Login(string login, string password)
         {
-            return _userRepository.GetByNameAndPassword(login, password);
+            return _userRepository.GetUserByNameAndPassword(login, password);
         }
-
     }
 }

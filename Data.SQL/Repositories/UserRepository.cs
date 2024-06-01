@@ -8,7 +8,7 @@ namespace Data.SQL.Repositories
     {
         public UserRepository(WebContext webContext) : base(webContext) { }
 
-        public User GetById(int id)
+        public User GetUserById(int id)
         {
             return _dbSet.SingleOrDefault(x => x.Id == id);
         }
@@ -20,7 +20,7 @@ namespace Data.SQL.Repositories
             return user;
         }
 
-        public User GetByNameAndPassword(string login, string password)
+        public User GetUserByNameAndPassword(string login, string password)
         {
             return _dbSet.FirstOrDefault(x => x.LoginName == login && x.Password == password);
         }

@@ -3,11 +3,10 @@ using PetProject.Models;
 
 namespace PetProject.Services
 {
-    public interface IUserService 
+    public interface IUserService
     {
         User Login(string login, string password);
-        public void AddUser (UserViewModel viewModel);
-        User GetById(int currentUserId);
+        User GetUserById(int currentUserId);
         public void CreateUser(string loginName, string email, string password);
     }
 }

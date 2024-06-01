@@ -13,44 +13,16 @@
     @RenderSection("Styles", false)
 </head>
 <body>
-    <div class="main-container">
-        <div class="navigation-leftColumn-container">
-            <div class="logo-of-site">
-                <a asp-controller="Home" asp-action="Index"> <img class="logo-of-site" src="/images/cat_logo.png" /></a>
-            </div>
-            <a class="item-of-column" asp-controller="UserProfile" asp-action="OpenProfile">
-                <img class="navigation-logo" src="/images/other.png" />
-                <div class="name-of-column">Мой профиль</div>
-            </a>
-            <a class="item-of-column" asp-controller="Home" asp-action="Index">
-                <img class="navigation-logo" src="/images/messages.png" />
-                <div class="name-of-column">Моя лента</div>
-            </a>
-            <a class="item-of-column" asp-controller="Home" asp-action="Index">
-                <img class="navigation-logo" src="/images/icon.png" />
-                <div class="name-of-column">Интересное</div>
-            </a>
-            <a class="item-of-column" asp-controller="User" asp-action="AddUser">
-                <img class="navigation-logo" src="/images/home.png" />
-                <div class="name-of-column">Создать профиль</div>
-            </a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a class="logout-button item-of-column" asp-controller="User" asp-action="Logout">Выйти</a>
-            }
-            else
-            {
-                <a class="login-button item-of-column" asp-area="" asp-controller="User" asp-action="Login">Войти</a>
-            }
-        </div>
-        <div class="content-container">
+    <div class="cat-container">
+        <img class="cat" src="/images/cat.gif" />
+        <div>
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>
     </div>
     <footer>
-            &copy; 2024 - PetProject
+        &copy; 2024 - PetProject
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

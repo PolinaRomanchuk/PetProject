@@ -18,29 +18,6 @@ namespace PetProject.Services
             _userProfileRepository = userProfileRepository;
             _webHostEnvironment = webHostEnvironment;
         }
-        public User GetCurrentUserProfile()
-        {
-            var userId = _authService.GetUser().Id;
-            var userWithProfile = _userRepository.GetUserWithProfileandPosts(userId);
-            return userWithProfile;
-        }
-
-        public UserProfileViewModel GetUserProfile()
-        {
-            var user = GetCurrentUserProfile();
-
-            return new UserProfileViewModel
-            {
-                Id = user.Id,
-                PetName = user.Profile.PetName,
-                InfoBio = user.Profile.InfoBio,
-                FollowersCount = user.Profile.FollowersCount,
-                FollowingCount = user.Profile.FollowingCount,
-                PostsCount = user.Posts.Count,
-                PhotoUrl = user.Profile.ProfilePhotoUrl,
-                Posts = user.Posts.Select(x => x.ImageUrl).ToList(),
-            };
-        }
 
         public UserProfileViewModel GetUserProfileById(int id)
         {
@@ -57,37 +34,6 @@ namespace PetProject.Services
                 PhotoUrl = user.Profile.ProfilePhotoUrl,
                 Posts = user.Posts.Select(x => x.ImageUrl).ToList(),
             };
-        }
-
-        public void UpdateUserProfile(int id, string newPetName, string newInfoBio)
-        {
-            _userProfileRepository.UpdatePetNameAndInfoBioInUserProfile(id, newPetName, newInfoBio);
-        }
-
-        public void UpdateUserProfileAvatar(UserProfileViewModel viewModel)
-        {
-            var user = _userProfileRepository.Get(viewModel.Id);
-            if (viewModel.ImgUrlFile != null)
-            {
-                var ext = Path.GetExtension(viewModel.ImgUrlFile.FileName);
-                var fileName = $"avatar-{user.Id}{ext}";
-                if (!File.Exists(fileName))
-                {
-                    File.Delete(fileName);
-                }
-                var path = Path.Combine(
-                    _webHostEnvironment.WebRootPath,
-                    "images",
-                    "avatars",
-                    fileName);
-
-                using (var fs = File.Create(path))
-                {
-                    viewModel.ImgUrlFile.CopyTo(fs);
-                }
-                user.ProfilePhotoUrl = $"https://localhost:7074/images/avatars/{fileName}";
-                _userProfileRepository.Update(user);
-            }
         }
 
         public void UpdateUserProfileAvatar(IFormFile formFile, int id)
@@ -121,5 +67,4 @@ namespace PetProject.Services
             _userProfileRepository.UpdatePetNameUserNameAndInfoBioInUserProfile(petName, petInfo, id);
         }
     }
-
 }
