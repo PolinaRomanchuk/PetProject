@@ -1,5 +1,4 @@
-﻿using Data.SQL.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetProject.Models;
 using PetProject.Services;
 
@@ -27,15 +26,19 @@ namespace PetProject.Controllers.API
         [Route("OpenUserProfile")]
         public UserProfileViewModel OpenProfile(int id)
         {
-            var c = _userProfileService.GetUserProfileById(id);
-            return c;
+            return _userProfileService.GetUserProfileById(id);
         }
 
         [Route("UpdateProfile")]
-        public void UpdateUserProfile(string petName, string petInfo, int id)
+        public void UpdateUserProfile(string petName, string? petInfo, int id)
         {
             _userProfileService.UpdateUserProfile(petName, petInfo, id);
         }
 
+        [Route("UpdateAvatar")]
+        public void UpdateAvatar([FromForm] IFormFile file, [FromForm] int id)
+        {
+            _userProfileService.UpdateUserProfileAvatar(file, id);
+        }
     }
 }

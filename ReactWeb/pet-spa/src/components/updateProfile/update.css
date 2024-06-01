@@ -1,3 +1,103 @@
-.container-edit{
-    padding-left: 300px;
+.container-edit {
+    padding-left: 400px;
+    display: flex;
+    font-family: system-ui;
+    padding-top: 40px;
+    flex-direction: column;
+}
+
+.header-edit {
+    font-size: 25px;
+    padding-bottom: 40px;
+}
+
+.avatar-container {
+    padding-right: 40px;
+}
+
+img.avatar-edit {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 50%;
+    border: 1px solid blueviolet;
+}
+
+.content-edit {
+    display: flex;
+}
+
+.form-edit {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.name-edit-line.petName {
+    padding-right: 20px;
+}
+
+.name-edit-line.petInfo {
+    padding-right: 46px;
+}
+
+.edit-item {
+    padding-bottom: 20px;
+}
+
+.update-button {
+    background: #a16fc5;
+    color: #FFFFFF;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border: none;
+}
+
+.update-button:hover,
+.update-button:active,
+.update-button:focus {
+    background: #4c0082da;
+}
+
+.hidden{
+    opacity: 0;
+    height: 0;
+    width: 0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+.update-photo-container
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px ;
+}
+.column-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.update-photo-button{
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #a16fc5;
+    font-family: system-ui;
+    font-size: 15px;
+    text-align: left;
+    padding: 0;
+    font-weight: bold
+}
+
+.update-photo-button:hover,
+.update-photo-button:active,
+.update-photo-button:focus {
+    color: #4c0082da;
+}
+.login-name{
+    padding: 0;
+    margin: 0;
 }

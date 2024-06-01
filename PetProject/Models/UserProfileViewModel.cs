@@ -1,6 +1,4 @@
-﻿using Data.SQL.Models;
-
-namespace PetProject.Models
+﻿namespace PetProject.Models
 {
     public class UserProfileViewModel
     {

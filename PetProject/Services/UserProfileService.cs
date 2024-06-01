@@ -1,11 +1,10 @@
 ﻿using Data.SQL.Interfaces;
 using Data.SQL.Models;
 using PetProject.Models;
-using System.Drawing;
 
 namespace PetProject.Services
 {
-    public class UserProfileService: IUserProfileService
+    public class UserProfileService : IUserProfileService
     {
         private IUserRepository _userRepository;
         private IAuthService _authService;
@@ -65,14 +64,10 @@ namespace PetProject.Services
             _userProfileRepository.UpdatePetNameAndInfoBioInUserProfile(id, newPetName, newInfoBio);
         }
 
-
-
-        
-
         public void UpdateUserProfileAvatar(UserProfileViewModel viewModel)
         {
             var user = _userProfileRepository.Get(viewModel.Id);
-            if (viewModel.ImgUrlFile != null) 
+            if (viewModel.ImgUrlFile != null)
             {
                 var ext = Path.GetExtension(viewModel.ImgUrlFile.FileName);
                 var fileName = $"avatar-{user.Id}{ext}";
@@ -95,16 +90,36 @@ namespace PetProject.Services
             }
         }
 
-
-
-
-        public void UpdateUserProfile( string petName, string petInfo, int id)
+        public void UpdateUserProfileAvatar(IFormFile formFile, int id)
         {
-            _userProfileRepository.UpdatePetNameUserNameAndInfoBioInUserProfile(petName,  petInfo,  id);
+            var user = _userProfileRepository.Get(id);
+            if (formFile != null)
+            {
+                var ext = Path.GetExtension(formFile.FileName);
+                var fileName = $"avatar-{user.Id}{ext}";
+                if (!File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+                var path = Path.Combine(
+                    _webHostEnvironment.WebRootPath,
+                    "images",
+                    "avatars",
+                    fileName);
+
+                using (var fs = File.Create(path))
+                {
+                    formFile.CopyTo(fs);
+                }
+                user.ProfilePhotoUrl = $"https://localhost:7074/images/avatars/{fileName}";
+                _userProfileRepository.Update(user);
+            }
+        }
+
+        public void UpdateUserProfile(string petName, string petInfo, int id)
+        {
+            _userProfileRepository.UpdatePetNameUserNameAndInfoBioInUserProfile(petName, petInfo, id);
         }
     }
-
-
-
 
 }

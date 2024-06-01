@@ -21,8 +21,8 @@ function Profile() {
             });
     }, [])
 
-    function Redirect(){
-        navigate('/edit');
+    function Redirect() {
+        navigate(`/edit/${profile.id}`);
     }
 
     return (

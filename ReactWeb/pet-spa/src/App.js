@@ -19,16 +19,16 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <AuthProvider>
-        <MainMenu />
-        <Routes>
-          <Route path="/login" element={<AuthProvider/>} />
-          <Route path="/user" element={<CreateUser/>} />
-          <Route path="/" element={<index/>} />
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/done" element={<SuccessfullyCreated/>}/>
-          <Route path="/edit"element={<UpdateProfile/>}/>
-        </Routes>
+        <AuthProvider>
+          <MainMenu />
+          <Routes>
+            <Route path="/login" element={<AuthProvider />} />
+            <Route path="/user" element={<CreateUser />} />
+            <Route path="/" element={<index />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/done" element={<SuccessfullyCreated />} />
+            <Route path="/edit/:id" element={<UpdateProfile />} />
+          </Routes>
         </AuthProvider>
       </BrowserRouter>
     </div>
