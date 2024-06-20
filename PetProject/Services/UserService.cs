@@ -20,6 +20,7 @@ namespace PetProject.Services
                 LoginName = loginName,
                 Password = password,
                 Email = email,
+                Role = MyRole.ProfileOwner,
             };
             _userRepository.Add(User);
         }

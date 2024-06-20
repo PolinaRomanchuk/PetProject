@@ -86,9 +86,9 @@
   transform: rotate(-45deg);
 }
 
-.form button:hover,
-.form button:active,
-.form button:focus {
+.user-form button:hover,
+.user-form button:active,
+.user-form button:focus {
   background: #4c0082da;
 }
 

@@ -1,8 +1,7 @@
 ﻿namespace Data.SQL.Models
 {
-    public class Post
+    public class Post : BaseModel
     {
-        public int Id { get; set; }
         public string ImageUrl { get; set; }
         public DateTime DateOfPublication { get; set; }
         public string? Description { get; set; }

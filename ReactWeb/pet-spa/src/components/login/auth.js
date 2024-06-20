@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
                                 <Link to={'/'}>
                                     <button className="close-button" />
                                 </Link>
-                                <form class="login-form" onSubmit={SubmitHandler}>
+                                <form class="user-form" onSubmit={SubmitHandler}>
                                     <input type="text" required placeholder="логин" value={login} onChange={e => setLogin(e.target.value)} />
                                     <input type="password" required placeholder="пароль" value={password} onChange={e => setPassword(e.target.value)} className='passwordInput' />
                                     <button type='submit'>Войти</button>

@@ -5,6 +5,7 @@
         public required string LoginName { get; set; }
         public required string Email { get; set; }
         public required string Password { get; set; }
+        public MyRole Role { get; set; }
 
         public virtual UserProfile? Profile { get; set; }
 

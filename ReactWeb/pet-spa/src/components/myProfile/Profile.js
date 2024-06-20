@@ -6,12 +6,16 @@ import { useContext } from 'react';
 import Post from './Post';
 import { Pencil, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../modal/modal';
+import NewPost from './newPost';
 
 function Profile() {
     const [profile, setProfile] = useState('');
     const { GetUserProfile } = profileApi;
     const { userId, name } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const [active, setActive] = useState(false);
 
     useEffect(function () {
         GetUserProfile(userId)
@@ -39,7 +43,10 @@ function Profile() {
                                 <Pencil className="pencil-logo" onClick={Redirect} />
                             </button>
                             {<button className='add-new-post-button' >
-                                <Plus className="plus-logo" />
+                                <Plus className="plus-logo" onClick={() => setActive(true)} />
+                                <Modal active={active} setActive={setActive}>
+                                    <NewPost active={active} setActive={setActive} model={profile.photoUrl}/>
+                                </Modal>
                             </button>}
                         </div>
                         <div className="profile-info">

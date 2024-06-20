@@ -26,7 +26,7 @@ function CreateUser() {
                     <Link to={'/'}>
                         <button className="close-button" />
                     </Link>
-                    <form className="register-form" onSubmit={SubmitHandler}>
+                    <form className="user-form" onSubmit={SubmitHandler}>
                         <input type="text" required placeholder="имя пользователя" value={login} onChange={e => setLogin(e.target.value)} />
                         <input type="password" required placeholder="пароль" value={password} onChange={e => setPassword(e.target.value)} />
                         <input type="email" required placeholder="email адрес" value={email} onChange={e => setEmail(e.target.value)} />
