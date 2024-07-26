@@ -6,16 +6,18 @@ namespace PetProject.Services
     public class UserProfileService : IUserProfileService
     {
         private IUserRepository _userRepository;
+        private IUserPostService _userPostService;
         private IAuthService _authService;
         private IUserProfileRepository _userProfileRepository;
         private IWebHostEnvironment _webHostEnvironment;
 
-        public UserProfileService(IUserRepository userRepository, IAuthService authService, IUserProfileRepository userProfileRepository, IWebHostEnvironment webHostEnvironment)
+        public UserProfileService(IUserRepository userRepository, IAuthService authService, IUserProfileRepository userProfileRepository, IUserPostService userPostService, IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _authService = authService;
             _userProfileRepository = userProfileRepository;
             _webHostEnvironment = webHostEnvironment;
+            _userPostService = userPostService;
         }
 
         public UserProfileViewModel GetUserProfileById(int id)
@@ -32,6 +34,7 @@ namespace PetProject.Services
                 PostsCount = user.Posts.Count,
                 PhotoUrl = user.Profile.ProfilePhotoUrl,
                 Posts = user.Posts.Select(x => x.ImageUrl).ToList(),
+                PostsModels = _userPostService.GetPostsModels(id),
             };
         }
 

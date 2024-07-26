@@ -1,0 +1,110 @@
+.open-post-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px 10px 10px;
+    width: 1000px;
+    height: 600px;
+    cursor: auto;
+    font-family: system-ui;
+}
+
+.open-post-container .close-button {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: opacity ease 0.5s;
+    background: none;
+    border: 0;
+    padding: 15px;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &::after,
+    ::before {
+        content: '';
+        position: absolute;
+        top: 13px;
+        right: 2px;
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: #4c0082da;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
+
+.selected-photo-container {
+    display: flex;
+}
+
+.selected-photo {
+    width: 590px;
+    height: 590px;
+
+    & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.avatar-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-info-container {
+    max-width: 420px;
+    padding-left: 10px;
+}
+
+.desc-post {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: justify;
+    border-bottom: 1px solid #4c0082da;
+}
+
+.comment-post {
+    height: 420px;
+    overflow-y: auto;
+}
+
+.likes-number {
+    padding-bottom: 10px;
+}
+
+.name-profile {
+    font-weight: bold;
+}
+
+.date-post,
+.likes-number {
+    font-size: 13px;
+}

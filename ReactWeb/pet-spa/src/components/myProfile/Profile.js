@@ -70,8 +70,8 @@ function Profile() {
                 </div>
                 <div className='posts-list-container'>
                     {
-                        profile.posts?.map(post => {
-                            return (<Post model={post}></Post>)
+                        profile.postsModels?.toReversed().map(post => {
+                            return (<Post model={post} userPhoto={profile.photoUrl} fullmodel={profile.postsModels}></Post>)
                         })
                     }
                 </div>

@@ -11,6 +11,6 @@
         public int FollowingCount { get; set; }
         public int PostsCount { get; set; }
         public List<string>? Posts { get; set; }
-
+        public List <PostViewModel> PostsModels { get; set; }
     }
 }

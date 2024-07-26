@@ -1,5 +1,7 @@
 ﻿using Data.SQL.Interfaces;
 using Data.SQL.Models;
+using Microsoft.Identity.Client;
+using PetProject.Models;
 
 namespace PetProject.Services
 {
@@ -48,7 +50,21 @@ namespace PetProject.Services
                 newPost.ImageUrl = $"https://localhost:7074/images/posts/{fileName}";
                 _postRepository.Update(newPost);
             }
-
+        }
+        public List<PostViewModel> GetPostsModels(int id)
+        {
+            var user = _userRepository.Get(id);
+            var posts = _postRepository.GetAll().Where(x => x.Author.Id == id).ToList();
+            return posts.Select(x => new PostViewModel
+            {
+                Id = x.Id,
+                CountOfLikes = x.CountOfLikes,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl,
+                DateOfPublication = x.DateOfPublication,
+            }).ToList();
         }
     }
 }
+
+
