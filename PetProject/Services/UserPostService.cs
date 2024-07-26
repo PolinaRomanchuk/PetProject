@@ -23,7 +23,7 @@ namespace PetProject.Services
             var newPost = new Post
             {
                 ImageUrl = "Temp",
-                DateOfPublication = new DateTime(),
+                DateOfPublication = DateTime.Now.ToLocalTime(),
                 Author = user,
                 CountOfLikes = 0,
                 Description = description,
