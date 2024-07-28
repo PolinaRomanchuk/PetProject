@@ -3,13 +3,26 @@ import { AuthContext } from '../login/auth';
 import './openPost.css';
 import Comment from "./Comment";
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { addNewCommentApi } from '../../services/addNewCommentApi.js'
+
 
 function OpenPost({ model, setActive, userPhoto, fullmodel, active, nextPost, prevPost, }) {
     const { userId, name } = useContext(AuthContext);
+    const [commentText, setCommentText] = useState('');
+    const { AddNewComment } = addNewCommentApi;
 
     const closeWindow = () => {
         setActive(false);
     }
+    const handleSubmit = () => {
+        // AddNewComment(commentText, userId, model);
+
+        const formData = new FormData();
+        formData.append('commentText', commentText);
+        formData.append('commentAuthor', userId);
+        formData.append('currentPost', model.id);
+        AddNewComment(formData);
+    };
 
     return (
         <div className="open-post-main-container">
@@ -31,8 +44,21 @@ function OpenPost({ model, setActive, userPhoto, fullmodel, active, nextPost, pr
                         <div className="date-post">{model.dateOfPublication} </div>
                         <div className="likes-number"> Нравится: {model.countOfLikes}</div>
                         <div className="comment-post">
-                            <Comment></Comment>
-                            <Comment></Comment>
+                            {
+                                model.comments?.map(comment => {
+                                    return (<Comment comment={comment}></Comment>)
+                                })
+                            }
+                        </div>
+                        <div className="add-new-comment-place">
+                            <form>
+                                <textarea
+                                    className="new-comment"
+                                    type="text"
+                                    placeholder="оставьте комментарий"
+                                    value={commentText} onChange={e => setCommentText(e.target.value)} />
+                            </form>
+                            <button type="submit" onClick={handleSubmit} >отправить</button>
                         </div>
                     </div>
                 </div>

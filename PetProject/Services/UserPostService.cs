@@ -1,6 +1,5 @@
 ﻿using Data.SQL.Interfaces;
 using Data.SQL.Models;
-using Microsoft.Identity.Client;
 using PetProject.Models;
 
 namespace PetProject.Services
@@ -9,13 +8,17 @@ namespace PetProject.Services
     {
         private IUserRepository _userRepository;
         private IPostRepository _postRepository;
+        private ICommentRepository _commentRepository;
         private IWebHostEnvironment _webHostEnvironment;
+        private ICommentService _commentService;
 
-        public UserPostService(IUserRepository userRepository, IPostRepository postRepository, IWebHostEnvironment webHostEnvironment)
+        public UserPostService(IUserRepository userRepository, IPostRepository postRepository, IWebHostEnvironment webHostEnvironment, ICommentRepository commentRepository, ICommentService commentService)
         {
             _userRepository = userRepository;
             _postRepository = postRepository;
             _webHostEnvironment = webHostEnvironment;
+            _commentRepository = commentRepository;
+            _commentService = commentService;
         }
 
 
@@ -55,13 +58,17 @@ namespace PetProject.Services
         {
             var user = _userRepository.Get(id);
             var posts = _postRepository.GetAll().Where(x => x.Author.Id == id).ToList();
+            var postId = 0;
+            var comments = _commentRepository.GetAll().ToList();
+          
             return posts.Select(x => new PostViewModel
             {
-                Id = x.Id,
+                Id = x.Id = postId,
                 CountOfLikes = x.CountOfLikes,
                 Description = x.Description,
                 ImageUrl = x.ImageUrl,
                 DateOfPublication = x.DateOfPublication,
+                Comments = _commentService.SqlModelToViewModel(comments.Where(x => x.CommentedPost.Id == postId).ToList()),
             }).ToList();
         }
     }

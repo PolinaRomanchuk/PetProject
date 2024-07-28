@@ -6,9 +6,8 @@ namespace Data.SQL
     public class WebContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-
         public DbSet<UserProfile> Profiles { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
 
         public WebContext() { }
@@ -29,6 +28,16 @@ namespace Data.SQL
                 .HasMany(x => x.Posts)
                 .WithOne(x => x.Author)
                 .IsRequired(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(x => x.Comments)
+                .WithOne(x => x.CommentAuthor)
+                .IsRequired(false);
+
+            modelBuilder.Entity<Post>()
+               .HasMany(x => x.PostComments)
+               .WithOne(x => x.CommentedPost)
+               .IsRequired(false);
 
             base.OnModelCreating(modelBuilder);
         }

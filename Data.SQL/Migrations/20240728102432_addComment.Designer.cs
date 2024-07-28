@@ -4,6 +4,7 @@ using Data.SQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.SQL.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20240728102432_addComment")]
+    partial class addComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,14 +46,9 @@ namespace Data.SQL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommentedPostId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CommentAuthorId");
-
-                    b.HasIndex("CommentedPostId");
 
                     b.ToTable("Comments");
                 });
@@ -63,7 +61,7 @@ namespace Data.SQL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<int>("CountOfLikes")
@@ -76,6 +74,7 @@ namespace Data.SQL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -148,13 +147,7 @@ namespace Data.SQL.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("CommentAuthorId");
 
-                    b.HasOne("Data.SQL.Models.Post", "CommentedPost")
-                        .WithMany("PostComments")
-                        .HasForeignKey("CommentedPostId");
-
                     b.Navigation("CommentAuthor");
-
-                    b.Navigation("CommentedPost");
                 });
 
             modelBuilder.Entity("Data.SQL.Models.Post", b =>
@@ -175,11 +168,6 @@ namespace Data.SQL.Migrations
                         .IsRequired();
 
                     b.Navigation("UserData");
-                });
-
-            modelBuilder.Entity("Data.SQL.Models.Post", b =>
-                {
-                    b.Navigation("PostComments");
                 });
 
             modelBuilder.Entity("Data.SQL.Models.User", b =>
