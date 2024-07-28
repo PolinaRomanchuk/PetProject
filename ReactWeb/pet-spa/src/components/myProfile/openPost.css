@@ -108,3 +108,30 @@
 .likes-number {
     font-size: 13px;
 }
+
+
+.open-post-main-container{
+    display: flex;
+    align-items: center;
+}
+
+.btn-paginator-arrow{
+    background: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.5s ease-in-out;
+
+    &.left{
+    right: 200px;
+    }
+    &.right{
+        left:200px;
+    }
+    &:hover{
+        background-color: #4c0082da;
+    }
+}
