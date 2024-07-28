@@ -1,5 +1,4 @@
 ﻿using Data.SQL.Models;
-using PetProject.Models;
 
 namespace PetProject.Services
 {
